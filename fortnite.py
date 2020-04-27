@@ -118,7 +118,6 @@ client = fortnitepy.Client(
         functools.partial(fortnitepy.ClientPartyMember.set_outfit, asset=data['cid']),
         functools.partial(fortnitepy.ClientPartyMember.set_backpack, data['bid']),
         functools.partial(fortnitepy.ClientPartyMember.set_banner, icon=data['banner'], color=data['banner_colour'], season_level=data['level']),
-        functools.partial(fortnitepy.ClientPartyMember.set_emote, data['eid']),
         functools.partial(fortnitepy.ClientPartyMember.set_pickaxe, data['pid']),
         functools.partial(fortnitepy.ClientPartyMember.set_battlepass_info, has_purchased=True, level=data['bp_tier'], self_boost_xp='0', friend_boost_xp='0')
     ]
