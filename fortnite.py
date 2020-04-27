@@ -125,7 +125,7 @@ client = fortnitepy.Client(
 )
 
 @client.event
-async def event_device_auth_geenerate(details, email):
+async def event_device_auth_generate(details, email):
     store_device_auth_details(email, details)
 
 @client.event
