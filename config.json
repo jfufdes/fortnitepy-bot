@@ -15,10 +15,7 @@
     "joinoninvite": "True",
     "AdminPassword": "0001",
     "FullAccess": [
-        "FaZe Sway",
-        "Duh"
     ],
     "BlockList": [
-        "Ninja"
     ]
 }
