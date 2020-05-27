@@ -113,14 +113,7 @@ client = fortnitepy.Client(
         **device_auth_details
     ),
     status=data['status'],
-    platform=fortnitepy.Platform(data['platform']),
-    default_party_member_config=[
-        functools.partial(fortnitepy.ClientPartyMember.set_outfit, asset=data['cid']),
-        functools.partial(fortnitepy.ClientPartyMember.set_backpack, data['bid']),
-        functools.partial(fortnitepy.ClientPartyMember.set_banner, icon=data['banner'], color=data['banner_colour'], season_level=data['level']),
-        functools.partial(fortnitepy.ClientPartyMember.set_pickaxe, data['pid']),
-        functools.partial(fortnitepy.ClientPartyMember.set_battlepass_info, has_purchased=True, level=data['bp_tier'], self_boost_xp='0', friend_boost_xp='0')
-    ]
+    platform=fortnitepy.Platform(data['platform'])
 )
 
 @client.event
@@ -130,6 +123,34 @@ async def event_device_auth_generate(details, email):
 @client.event
 async def event_ready():
     print(Fore.GREEN + ' [PYBOT] [' + getTime() + '] Client ready as {0.user.display_name}.'.format(client))
+
+    member = client.party.me
+
+    await member.edit_and_keep(
+        partial(
+            fortnitepy.ClientPartyMember.set_outfit,
+            asset=data['cid']
+        ),
+        partial(
+            fortnitepy.ClientPartyMember.set_backpack,
+            asset=data['bid']
+        ),
+        partial(
+            fortnitepy.ClientPartyMember.set_pickaxe,
+            asset=data['pid']
+        ),
+        partial(
+            fortnitepy.ClientPartyMember.set_banner,
+            icon=data['banner'],
+            color=data['banner_color'],
+            season_level=data['level']
+        ),
+        partial(
+            fortnitepy.ClientPartyMember.set_battlepass_info,
+            has_purchased=True,
+            level=data['bp_tier']
+        )
+    )
 
 @client.event
 async def event_party_invite(invite):
