@@ -108,7 +108,7 @@ client = fortnitepy.Client(
     auth=fortnitepy.AdvancedAuth(
         email=data['email'],
         password=data['password'],
-        prompt_exchange_code=True,
+        prompt_exchange_code=False,
         delete_existing_device_auths=True,
         **device_auth_details
     ),
